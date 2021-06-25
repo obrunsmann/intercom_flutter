@@ -122,8 +122,8 @@ id unread;
     } else if([@"sendTokenToIntercom" isEqualToString:call.method]){
         NSString *token = call.arguments[@"token"];
         if(token != (id)[NSNull null] && token != nil) {
-            // NSData* encodedToken=[token dataUsingEncoding:NSUTF8StringEncoding];
-            [Intercom setDeviceToken:token];
+            NSData* encodedToken=[token dataUsingEncoding:NSASCIIStringEncoding];
+            [Intercom setDeviceToken:encodedToken];
             result(@"Token set");
         }
     } else if([@"displayArticle" isEqualToString:call.method]) {
